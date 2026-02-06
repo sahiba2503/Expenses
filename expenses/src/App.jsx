@@ -1,9 +1,10 @@
-
-function App() {
+import ExpenseTracker from "./ExpenseTracker";
+function App(){
   return(
-<div>new project</div>
-  )
-   
+<div>
+  <h2>This is my new project about expenses</h2>
+<ExpenseTracker />
+</div>
+  )   
 }
-
-export default App
+export default App;
