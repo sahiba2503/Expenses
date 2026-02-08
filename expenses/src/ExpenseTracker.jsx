@@ -84,20 +84,18 @@
 import { useState, useEffect, useEffectEvent } from "react";
 
 function Timer() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [count , setCount] = useState(0);
+const [formData,setFormData] = useState({name:"", email:""})
+  const saveData =   useEffectEvent(()=> {
+      console.log("form data",formData)
+    });
      
- const chenge = useEffectEvent(()=> {
-  console.log("count :",count)
-  setCount((count)=> count + 1)
- })
-  useEffect(() => {
-   const id = setInterval(()=>{
-    chenge();
-   },1000)
-   return () => clearInterval(id)
-  }, []);
+   useEffect(() => {
+   const id = setInterval(() => {
+     saveData();
+  },3000)
+  return () => clearInterval(id)
+},[])
+      
 
   return (
     <div>
@@ -106,17 +104,22 @@ function Timer() {
       <input
         type="text"
         placeholder="Enter your name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
+        value={formData.name}
+        onChange={(e) => setFormData({...formData, name: e.target.value})}
       />
-
+<br />
       <input
         type="email"
         placeholder="Enter your email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+        value={formData.email}
+        onChange={(e) => setFormData({...formData, email: e.target.value})}
               />
-              <p>number {count}</p>
+              <br />
+              <b>Current name is : {formData.name}</b>
+              <br></br>
+              <br />
+              <b>Current email is : {formData.email}</b>
+             
     </div>
   );
 }
