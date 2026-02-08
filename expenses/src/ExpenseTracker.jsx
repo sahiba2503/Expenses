@@ -1,3 +1,4 @@
+//........................notes.......................
 // export default ExpenseTracker;
 //  onChange={(e)=>setItem(e.target.value)
 //it means when i enter any things in the input box or chenge any thing in input field that time item value should be chenge
@@ -7,73 +8,118 @@
 
 // setExpenses([...expenses, newExpense]);
 //here etExpenses function add new value with old value;
-import { useState } from "react";
+//.....................end..................................
 
-function ExpenseTracker() {
-  const [item, setItem] = useState("");
-  const [price, setPrice] = useState("");
-  const [expenses, setExpenses] = useState([]);
+//this code is form  create list to expenses;  
+// import { useState } from "react";
 
-  // Add expense
-  function addExpense() {
-    if (item === "" || price === "") return;
+// function ExpenseTracker() {
+//   const [item, setItem] = useState("");
+//   const [price, setPrice] = useState("");
+//   const [expenses, setExpenses] = useState([]);
 
-    const newExpense = {
-      id: Date.now(),
-      item: item,
-      price: price,
-    };
+//   // Add expense
+//   function addExpense() {
+//     if (item === "" || price === "") return;
 
-    setExpenses([...expenses, newExpense]);
+//     const newExpense = {
+//       id: Date.now(),
+//       item: item,
+//       price: price,
+//     };
 
-    setItem("");
-    setPrice("");
-  }
+//     setExpenses([...expenses, newExpense]);
 
-  // Delete expense
-  function deleteExpense(id) {
-    const newList = expenses.filter((exp) => exp.id !== id);
-    setExpenses(newList);
-  }
+//     setItem("");
+//     setPrice("");
+//   }
+
+//   // Delete expense
+//   function deleteExpense(id) {
+//     const newList = expenses.filter((exp) => exp.id !== id);
+//     setExpenses(newList);
+//   }
+
+//   return (
+//     <div className="home">
+//       <h2>Expense Tracker</h2>
+//       <input
+//         type="text"
+//         placeholder="Item name"
+//         value={item}
+//         onChange={(e) => setItem(e.target.value)}
+//       />
+
+//       <input
+//         type="number"
+//         placeholder="Price"
+//         value={price}
+//         onChange={(e) => setPrice(e.target.value)}
+//       />
+
+//       <button onClick={addExpense}>Add</button>
+
+//       <ul>
+//         {
+//         expenses.map(
+//             (exp) => (
+//           <li key={exp.id}>    {exp.item} -  Rs {exp.price}
+//             <span
+//               style={{ cursor: "pointer", marginLeft: "10px" }}
+//               onClick={() => deleteExpense(exp.id)}
+//             >
+//               delete
+//             </span>
+//           </li>
+//         )
+//         )
+//         }
+//       </ul>
+//     </div>
+//   );
+// }
+
+// export default ExpenseTracker;
+
+import { useState, useEffect, useEffectEvent } from "react";
+
+function Timer() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [count , setCount] = useState(0);
+     
+ const chenge = useEffectEvent(()=> {
+  console.log("count :",count)
+  setCount((count)=> count + 1)
+ })
+  useEffect(() => {
+   const id = setInterval(()=>{
+    chenge();
+   },1000)
+   return () => clearInterval(id)
+  }, []);
 
   return (
-    <div className="home">
-      <h2>Expense Tracker</h2>
+    <div>
+      <h2>Use useEffect hook in the form</h2>
+
       <input
         type="text"
-        placeholder="Item name"
-        value={item}
-        onChange={(e) => setItem(e.target.value)}
+        placeholder="Enter your name"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
       />
 
       <input
-        type="number"
-        placeholder="Price"
-        value={price}
-        onChange={(e) => setPrice(e.target.value)}
-      />
-
-      <button onClick={addExpense}>Add</button>
-
-      <ul>
-        {
-        expenses.map(
-            (exp) => (
-          <li key={exp.id}>    {exp.item} -  Rs {exp.price}
-            <span
-              style={{ cursor: "pointer", marginLeft: "10px" }}
-              onClick={() => deleteExpense(exp.id)}
-            >
-              delete
-            </span>
-          </li>
-        )
-        )
-        }
-      </ul>
+        type="email"
+        placeholder="Enter your email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+              />
+              <p>number {count}</p>
     </div>
   );
 }
 
-export default ExpenseTracker;
+export default Timer;
 
