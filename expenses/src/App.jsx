@@ -1,35 +1,24 @@
 // import ExpenseTracker from "./ExpenseTracker";
-import {createContext, useContext} from "react"
-const UserContext = createContext();
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
+import About from "./About";
+import Contact from "./Contact";
+import Home from "./Home";
 
 function App(){
-  const user = "sahiba";
-  
-  return(
-<div>
-  <h1>This is main component 💇‍♂️💇💇‍♀️</h1>
-  <UserContext.Provider value={user}>
-    <Parent />
-    </UserContext.Provider>
-</div>
-  )   
-}
-function Parent(){
-  return <Child />
-}
-function Child(){
-  const user = useContext(UserContext)
-  return(
-    <div>
-       <h2 style={{color:"blue"}}>This is chaild component 🧒🧒🧒</h2>
-      <h3 style={{color:"blue"}}>Name:{user} </h3>
-      <GrandChild />
-       </div>
+  return (
+    <BrowserRouter>
+    <h1>React Router Example</h1>
+    <nav>
+    <Link to="/">Home</Link>|
+    <Link to="/about">about</Link>|
+    <Link to="/contact">contact</Link>
+    </nav>
+    <Routes>
+      <Route path="/" element={<Home />} />
+       <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+    </Routes>
+    </BrowserRouter>
   )
-}
-function GrandChild(){
-  const user = useContext(UserContext)
-
-  return <h2>This is grand child 👶👶👶👶 , My name is {user}</h2>
 }
 export default App;
