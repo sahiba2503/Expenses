@@ -1,24 +1,30 @@
-// import ExpenseTracker from "./ExpenseTracker";
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
-import About from "./About";
-import Contact from "./Contact";
-import Home from "./Home";
 
-function App(){
+
+function App() {
   return (
-    <BrowserRouter>
-    <h1>React Router Example</h1>
-    <nav>
-    <Link to="/">Home</Link>|
-    <Link to="/about">about</Link>|
-    <Link to="/contact">contact</Link>
-    </nav>
-    <Routes>
-      <Route path="/" element={<Home />} />
-       <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Contact />} />
-    </Routes>
-    </BrowserRouter>
-  )
+   <div>
+      <h1>React Router Example</h1>
+
+      <a onClick={Home}>Home</a> |
+       <a onClick={About}>About</a> |
+        <a onClick={Contact}>Contact</a>
+     </div>
+   
+  );
 }
+
+function Home() {
+  return alert("Home function call");
+}
+
+function About() {
+  return alert("About function call");
+}
+
+function Contact() {
+  return alert("Contact function call");;
+}
+
 export default App;
+
+
