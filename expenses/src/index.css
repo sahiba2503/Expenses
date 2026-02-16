@@ -4,3 +4,12 @@
   font-weight: 400;
  }
 
+.show{
+  background-color: black;
+  color:white;
+
+}
+.hide{
+  background-color: white;
+  color:black;
+}

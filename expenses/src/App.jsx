@@ -1,10 +1,15 @@
-import Firstfile from "./Firstfile.jsx";
 
+import Secondfile from "./Secondfile.jsx";
+import Thirdfile from "./Thirdfile";
 function App() {
+ 
   return (
-    <>
-    <h1>This is main file</h1>
-    <Firstfile /> 
+    <> 
+   
+    <div>
+      <Secondfile />  
+      <Thirdfile />
+      </div>
     </>
   )
 }
