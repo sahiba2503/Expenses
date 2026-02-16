@@ -1,17 +1,16 @@
 
-import Secondfile from "./Secondfile.jsx";
+
 import Thirdfile from "./Thirdfile";
 function App() {
- 
-  return (
-    <> 
-   
-    <div>
-      <Secondfile />  
-      <Thirdfile />
-      </div>
-    </>
-  )
+  const isLoggedIn = true;
+   let message;
+    if(isLoggedIn){
+    message =   <div>     welcome to you  <Thirdfile />     </div>
+      }
+      else{
+        message = <h2> Sorry please login </h2>
+      }
+  return  message
 }
 export default App;
 
