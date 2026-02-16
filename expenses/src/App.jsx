@@ -1,30 +1,12 @@
-
+import Firstfile from "./Firstfile.jsx";
 
 function App() {
   return (
-   <div>
-      <h1>React Router Example</h1>
-
-      <a onClick={Home}>Home</a> |
-       <a onClick={About}>About</a> |
-        <a onClick={Contact}>Contact</a>
-     </div>
-   
-  );
+    <>
+    <h1>This is main file</h1>
+    <Firstfile /> 
+    </>
+  )
 }
-
-function Home() {
-  return alert("Home function call");
-}
-
-function About() {
-  return alert("About function call");
-}
-
-function Contact() {
-  return alert("Contact function call");;
-}
-
 export default App;
-
 
